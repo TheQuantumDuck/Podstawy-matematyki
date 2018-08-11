@@ -1,0 +1,131 @@
+[INCLUDE=bootstrap]
+Title      : Podstawy matematyki
+Css        : nav-example.css
+Col        { .col-lg-4 }
+Locale     : polish
+
+
+~ Begin Container
+~ Masthead
+Podstawy matematyki
+~
+
+[TOC]
+
+# Wprowadzenie do algebry oraz teorii mnogości
+Nie może powstać ścisły i wewnętrznie zupełny wykład analizy matematycznej, który nie poruszy w pewnym momencie tematu teorii zbiorów.
+Najbardziej istotne obiekty matematyczne w analizie matematycznej, jakimi są funkcje, również można zdefiniować jako szczególną rodzinę zbiorów.
+Zaczynając w odrobinę nieortodoksyjny sposób aksjomaty teorii zbiorów poprzedzimy wprowadzeniem pojęcia algebry.
+Dzięki temu zabiegowi, czytelnik od samego początku będzie mógł obserwować jak pewne abstrakcyjne konstrukcje powtarzają się w kolejnych działach matematyki. 
+{.lead}
+
+## Język logiki
+
+Część dowodów na tej stronie będzie formułowana w formalnym języku logiki matematycznej.
+Czytelnik czytający tę książkę powinien już znać ten język i sprawnie się nim posługiwać, to znaczy znać podstawowe techniki dowowodzenia twierdzeń.
+Chciałbym jednak aby dla zachowania wewnętrznej spójnści wszystkie określenia które mogłyby budzić wątpliwości były zdefiniowane.
+Dlatego wymienię wszystkie elementy języka logiki oraz zasady jego gramatyki. Otóż wszaystkimi podstawlwymi znakami tego języka są $\land,\lnot,\exists,\left(,\right),\in,=$ oraz $\nu_1,\nu_2,\nu_3\ldots$ reprezentujące zmienne.
+
+~ Definition
+*Wyrażeniem logicznym* nazywamy zdania postaci:
+
+1. $\nu_i=\nu_j$ oraz $\nu_k\in\nu_l$
+2. Jeśli $\phi$ oraz $\xi$ są wyrażeniami logicznymi, to są nimi również $\lnot\phi,\xi\land\phi,\exists\nu_i:\left(\phi\right)$.
+
+~
+
+Pozostałe powszechnie używane symbole logiczne są skrótami pewnych wyrażeń opisanych powyżej. Na przykład:
+
+* $\forall\nu_i:\left(\phi\right)$ jest skrótem od $\lnot\exists\nu_i:\left(\lnot\left(\phi\right)\right)$.
+* $\xi\lor\phi$ to skrót od $\lnot\left(\left(\lnot\xi\right)\land\left(\lnot\phi\right)\right)$
+* $\xi\implies\phi$ skraca $\left(\lnot\phi\right)\lor\left(\xi\right)$
+* $\phi\iff\xi$ skraca $\left(\phi\implies\xi\right)\land\left(\xi\implies\phi\right)$
+
+Listę przykładów możnaby ciągnąć i ciągnąć, ale jak już napisałem służy ona tylko zarysowaniu pewnej idei, że zbiór wymienionych podstawowych ,,słow'' jest wystarczający.
+Najczęściej oznaczenia symboliczne będziemy łączyć z opisem słownym według indywidualnego poczucia estetyki i wygody czytelnika.
+
+## Podstawowe struktury algebraiczne
+Słowo ,,algebra'' ma w matematyce przynajmniej dwa znaczenia. Jedno z nich odnosi się do jednego z największych działów matematyki, zajmującego się mówiąc najogólniej działaniami.
+Przykładami działań matematycznzych są dodawanie oraz mnożenie liczb rzeczywistych, mnożenie macierzy oraz również suma i iloczyn zbiorów.
+Przedmiotem badań algebry jest również to w jaki sposób te działania są do siebie podobne. Przykładowo to jakie są podobieństwa między mnożeniem macierzy, a mnożeniem liczb(zbieżność nazw w matematyce często nie będzie wynikiem przypadku).
+
+~ Definition
+*Działaniem dwuargumentowym* na $X$ nazywamy pewne odwzorowanie postaci $\circledcirc:X\times X\xrightarrow{}X$.
+To znaczy takie, które przyjmuje jako argumenty dwa obiekty należące do $X$, a zwraca jeden obiekt z $X$.
+Można powiedzieć również, że działanie $\circledcirc$ przyporządkowuje dowolnym dwóm elementom $X$ jakiś trzeci element (niekoniecznie różny od tych poprzednich).
+Jeśli dodatkowo:1.
+~
+
+1. $\forall_{x,y,z\in X}:x\circledcirc(y\circledcirc z)=(x\circledcirc y)\circledcirc z$ to działanie nazywamy *łącznym*.
+2. $\forall_{x,y\in X}:x\circledcirc y=y\circledcirc x$ to działanie nazywamy *przemiennym*.
+3. $\exists_{e\in X}\forall_{x\in X}:x\circledcirc e=e\circledcirc x=x$ to $e$ nazywamy *elementem neutralnym działania*.
+
+Ktoś spostrzegawczy mógł zauważyć, że w definicji nie pojawia się słowo ,,zbiór''. Nie jest to wcale przypadek.
+Jak pokażemy potem działanie jakim jest suma zbiorów $\cup$ zdefiniowane jest dla dowolnych dwóch zbiorów.
+Nie można jednak powiedzieć, że jest to działanie zdefiniowane na zbiorze wszystkich zbiorów, gdyż taki obiekt *po prostu nie istnieje*.
+
+## Aksjomatyka teorii mnogości
+Poniżej przedstawię aksjomatykę teorii zbiorów w ujęciu ZFC(Zelmero-Frankel-Choice). Należy podkreślić, iż nie jest to ani jedyny możliwy zestaw aksjomatów.
+Jest jednak prawdopodobnie najpopularniejszy.
+Na potrzeby pierwszego wykładu z analizy znajomość aksjomatów teorii mnogości nie jest szczególnie istotna.
+Zamieszczono je tutaj jako swego rodzaju dodatkowe informacje i wskazówka dla czytelnika który w przyszłości może bardziej zainteresować się teorią zbiorów.
+
+~ Definition
+(_Aksjomat zbioru pustego_)
+Istnieje taki zbiór $\emptyset$, że $\forall_x:x\notin\emptyset$.
+~
+
+~ Definition
+(_Aksjomat ekstensywności_)
+$X\subseteq Y\land Y\subseteq X\implies X=Y$.
+~
+
+~ Theorem
+Istnieje unikalny zbiór pusty $\emptyset$.
+~
+
+~ Proof
+Istotnie, na mocy aksjomatu estensywności gdyby istniał inny zbior pusty $\emptyset'$, to zachodziłoby:
+$\emptyset'\subseteq\emptyset\land\emptyset\subseteq\emptyset'\implies\emptyset=\emptyset'$ **Q.E.D.**
+~
+
+~ Definition
+(_Aksjomat sumy_)
+Niech $A,B$ będą dowolnymi zbiorami. Istnieje zbiór $A\cup B$ taki, że $x\in A\cup B\iff x\in A\lor x\in B$.
+~
+
+~ Definition
+Parą uporządkowaną nazywamy zbior $\left(x,y\right):=\left\{\left\{x\right\},\left\{x,y\right\}\right\}$.
+W tym wypadku $x$ nazywamy poprzednikiem, a $y$ następnikiem.
+~
+
+~ Definition
+*Funkcją* $f:X\xrightarrow{}Y$ nazywamy zbiór f par uporządkowanych, że elementy zbioru $X$ są poprzednikami, a elementy $Y$ następnikami, oraz każdemy element $X$ jest poprzednikiem w dokładnie jednej parze uporządkowanej.
+~
+
+~ Definition
+(_Aksjomat zastępowania_)
+Niech $f$ będzie pewną formułą przyjmującą
+~
+
+~ Definition
+(_Aksjomat zbioru potęgowego_)
+Niech $A$ będzie dowolnym zbiorem. Istnieje zbiór potęgowy $2^A$ spełniający $x\in2^A\iff x\subseteq A$.
+~
+
+~ Definition
+(_Aksjomat nieskończoności_)
+Istnieje zbiór $I$ spełniający warunek: $\emptyset\in I\land\forall_{x\in I}:x\cup\left\{x\right\}\in I$
+~
+
+~ Definition
+(_Aksjomat wyboru_) 
+Dla dowolnej rodziny niepustych zbiorów istnieje zbiór zawierający dokładnie po jednym elemencie z każdego ze zbiorów tej rodzdziny.
+~
+
+~ Footer
+&copy; Filip Fijałkowski 2018
+~
+
+~ End Container
+
