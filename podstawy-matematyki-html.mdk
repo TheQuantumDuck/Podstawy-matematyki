@@ -1,13 +1,14 @@
 [INCLUDE=bootstrap]
 Title      : Podstawy matematyki
 Css        : nav-example.css
+Package    : amsmath
 Col        { .col-lg-4 }
 Locale     : polish
 
 
 ~ Begin Container
 ~ Masthead
-Podstawy matematyki
+Podstawy matematyki test gitgub
 ~
 
 [TOC]
@@ -72,12 +73,17 @@ Zamieszczono je tutaj jako swego rodzaju dodatkowe informacje i wskazówka dla c
 
 ~ Definition
 (_Aksjomat zbioru pustego_)
-Istnieje taki zbiór $\emptyset$, że $\forall_x:x\notin\emptyset$.
+Istnieje taki zbiór $\emptyset$, że $\forall x \left(x\notin\emptyset\right)$.
 ~
 
 ~ Definition
 (_Aksjomat ekstensywności_)
-$X\subseteq Y\land Y\subseteq X\implies X=Y$.
+$\forall x\forall y\left(\forall z\left(z\in x\iff z\in y\right)\implies x=y\right)$.
+~
+
+~ Definition
+(_Aksjomat podzbiorów_)
+Niech $f$ będzie pewną formułą nie zawierającą zmiennej $y$, wówczas $\exists y\forall x\left(x\in y\iff x\in z\land f\right)$
 ~
 
 ~ Theorem
@@ -89,33 +95,42 @@ Istotnie, na mocy aksjomatu estensywności gdyby istniał inny zbior pusty $\emp
 $\emptyset'\subseteq\emptyset\land\emptyset\subseteq\emptyset'\implies\emptyset=\emptyset'$ **Q.E.D.**
 ~
 
+Założenie o tym, iż formuła $f$ nie zawiera $y$ jest tutaj bardzo istotne. Ilustruje to powszechnie znany *paradoks Russel'a*:
+przypuśćmy, że istnieje zbiór $y$ spełniający warunek $\forall x\left(x\in y\iff\left(x\in z\land x\notin y\right)\right)$.
+Można bez problemu wykazać, że zbiór $z$ musi być zbiorem pustym, a ponieważ aksjomat pozwala na wybranie dowolnego zbioru $z$, to każdy musiałby być pusty.
+Teoria zbiorów byłaby wówczas trywialna i bezużyteczna.
+
+~ Definition
+(_Aksjomat pary_)
+$\forall x\forall y\exists z\left(x\in z\land y\in z\right)$
+~
+
+~ Definition
+*Aksjomat podzbiorów* oraz *aksjomat pary* garantują istnienie zbioru $\left(x,y\right):=\left\{\left\{x\right\},\left\{x,y\right\}\right\}$.
+,zwanego *parą uporządkowaną*, gdzie $x$ nazywamy poprzednikiem, a $y$ następnikiem.
+~
+
 ~ Definition
 (_Aksjomat sumy_)
-Niech $A,B$ będą dowolnymi zbiorami. Istnieje zbiór $A\cup B$ taki, że $x\in A\cup B\iff x\in A\lor x\in B$.
-~
-
-~ Definition
-Parą uporządkowaną nazywamy zbior $\left(x,y\right):=\left\{\left\{x\right\},\left\{x,y\right\}\right\}$.
-W tym wypadku $x$ nazywamy poprzednikiem, a $y$ następnikiem.
-~
-
-~ Definition
-*Funkcją* $f:X\xrightarrow{}Y$ nazywamy zbiór f par uporządkowanych, że elementy zbioru $X$ są poprzednikami, a elementy $Y$ następnikami, oraz każdemy element $X$ jest poprzednikiem w dokładnie jednej parze uporządkowanej.
+$\forall\mathcal{F}\exists A\forall Y\forall x:\left(x\in Y\land Y\in\mathcal{F}\implies x\in A\right)$, stosujemy również oznaczenie $A=\bigcup\mathcal{F}$
 ~
 
 ~ Definition
 (_Aksjomat zastępowania_)
-Niech $f$ będzie pewną formułą przyjmującą
+$\forall x\in A\exists!y f\left(x,y\right)\implies\exists Y\forall x\in A\exists y\in Y f(x,y)$
 ~
+
+Sens powyższego aksjomatu jest następujący: jeśli dla dowolnego $x$ istnieje dokładnie jedno $y$, że pewne wyrażenie $f(x,y)$ jest prawdziwe, to istnieje zbiór $Y$ zawierający wszystkie takie $y$.
+Można z niego przykładowo wykazać istnienie obrazów funkcji $\text{im}\left(g\right):=\left\{y:\exists x f\left(x\right)=y\right\}$
 
 ~ Definition
 (_Aksjomat zbioru potęgowego_)
-Niech $A$ będzie dowolnym zbiorem. Istnieje zbiór potęgowy $2^A$ spełniający $x\in2^A\iff x\subseteq A$.
+$\forall x\exists y\forall z\left(z\subseteq x\implies z\in y\right)$, zbiór y oznaczamy przez $2^x$ zgodnie z konwencją według której przez $A^B$ będziemy oznaczać zbiór funkcji $f:B\xrightarrow{} A$.
 ~
 
 ~ Definition
 (_Aksjomat nieskończoności_)
-Istnieje zbiór $I$ spełniający warunek: $\emptyset\in I\land\forall_{x\in I}:x\cup\left\{x\right\}\in I$
+$\exists x\left(\emptyset\in x\land\forall_{y\in x}y\cup\left\{y\right\}\in x\right)$
 ~
 
 ~ Definition
